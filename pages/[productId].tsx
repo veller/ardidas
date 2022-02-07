@@ -2,6 +2,7 @@ import React from "react";
 import Stripe from "stripe";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 
 interface IParams extends ParsedUrlQuery {
@@ -60,6 +61,7 @@ const Product: React.FC<Props> = ({ product, productPrice }) => {
         height={400}
       />
       <h2>Preço: {(productPrice / 100).toFixed(2)}</h2>
+      <Link href="/">Go back</Link>
     </div>
   );
 };
