@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import Stripe from "stripe";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   products: Stripe.Product[];
@@ -28,28 +29,27 @@ const getProductPrice = (
     (pp) => pp.product === productId
   );
 
-  if (!productPriceObject || !productPriceObject.unit_amount) {
-    return (0).toFixed(2);
-  }
-
-  return (productPriceObject.unit_amount / 100).toFixed(2);
+  return (productPriceObject?.unit_amount ?? 0 / 100).toFixed(2);
 };
 
 const HomePage: React.FC<Props> = ({ products, productsPrices }) => {
   return (
     <>
-      <h1>no i never cared aboudat</h1>
       {products.map((product: Stripe.Product) => (
-        <div key={product.id}>
-          <h1>{product.name}</h1>
-          <Image
-            src={product.images[0]}
-            alt={product.name}
-            width={380}
-            height={380}
-          />
-          <h2>Preço: {getProductPrice(product.id, productsPrices)}</h2>
-        </div>
+        <Link href={"/" + product.id} key={product.id}>
+          <a>
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              width={380}
+              height={380}
+            />
+            <div>{getProductPrice(product.id, productsPrices)}</div>
+            <h1>{product.name}</h1>
+            <h2>{product.description}</h2>
+            <hr />
+          </a>
+        </Link>
       ))}
     </>
   );

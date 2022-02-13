@@ -61,6 +61,9 @@ const Product: React.FC<Props> = ({ product, productPrice }) => {
         height={400}
       />
       <h2>Preço: {(productPrice / 100).toFixed(2)}</h2>
+
+      <br />
+      <br />
       <Link href="/">Go back</Link>
     </div>
   );
