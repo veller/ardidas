@@ -4,8 +4,8 @@
 - ✔️ list of products on index
 - ✔️ product details page
 - ✔️ wire up stripe payment
-- ⏳ deploy to vercel
+- ✔️ deploy to vercel
+- ⏳ styling of pages
 - success and cancel pages
-- styling of pages
 - review of products
 - cart management

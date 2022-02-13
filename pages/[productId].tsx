@@ -48,14 +48,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       product,
-      productPrice: productPrice.data[0].unit_amount,
-      productPriceId: productPrice.data[0].id,
+      productPrice: productPrice.data[0]?.unit_amount ?? 0,
+      productPriceId: productPrice.data[0]?.id ?? "",
     },
   };
 };
 
 const redirectToCheckout = async (productPriceId: string) => {
-  console.log(`entrei nessa merda?`, productPriceId);
   // create stripe checkout
   const {
     data: { id },

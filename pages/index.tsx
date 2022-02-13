@@ -13,8 +13,8 @@ export const getStaticProps: GetStaticProps = async () => {
     apiVersion: "2020-08-27",
   });
 
-  const products = await stripe.products.list();
-  const productsPrices = await stripe.prices.list();
+  const products = await stripe.products.list({ limit: 100 });
+  const productsPrices = await stripe.prices.list({ limit: 100 });
 
   return {
     props: { products: products.data, productsPrices: productsPrices.data },
@@ -29,7 +29,7 @@ const getProductPrice = (
     (pp) => pp.product === productId
   );
 
-  return (productPriceObject?.unit_amount ?? 0 / 100).toFixed(2);
+  return ((productPriceObject?.unit_amount ?? 0) / 100).toFixed(2);
 };
 
 const HomePage: React.FC<Props> = ({ products, productsPrices }) => {
