@@ -4,6 +4,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
+import axios from "axios";
+import getStripe from "../utils/get-stripe";
 
 interface IParams extends ParsedUrlQuery {
   productId: string;
@@ -12,6 +14,7 @@ interface IParams extends ParsedUrlQuery {
 interface Props {
   product: Stripe.Product;
   productPrice: number;
+  productPriceId: string;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -46,11 +49,30 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       product,
       productPrice: productPrice.data[0].unit_amount,
+      productPriceId: productPrice.data[0].id,
     },
   };
 };
 
-const Product: React.FC<Props> = ({ product, productPrice }) => {
+const redirectToCheckout = async (productPriceId: string) => {
+  console.log(`entrei nessa merda?`, productPriceId);
+  // create stripe checkout
+  const {
+    data: { id },
+  } = await axios.post("/api/checkout-sessions", {
+    items: [{ price: productPriceId, quantity: 1 }],
+  });
+
+  // redirect to checkout
+  const stripe = await getStripe();
+  await stripe?.redirectToCheckout({ sessionId: id });
+};
+
+const Product: React.FC<Props> = ({
+  product,
+  productPrice,
+  productPriceId,
+}) => {
   return (
     <div>
       <h1>{product.name}</h1>
@@ -61,7 +83,7 @@ const Product: React.FC<Props> = ({ product, productPrice }) => {
         height={400}
       />
       <h2>Preço: {(productPrice / 100).toFixed(2)}</h2>
-
+      <button onClick={() => redirectToCheckout(productPriceId)}>Buy</button>
       <br />
       <br />
       <Link href="/">Go back</Link>
