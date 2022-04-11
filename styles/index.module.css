@@ -1,0 +1,57 @@
+.container {
+  margin: auto 10%;
+}
+
+.logo {
+  margin: 50px;
+}
+
+.productsGridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.productsGridItem {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.productsGridItem:hover {
+  border: 1px solid black;
+}
+
+.productsGridItemDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.productsGridItemDetails > * {
+  font-style: normal;
+  font-weight: normal;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 20px;
+  font-size: 14px;
+  bottom: 40%;
+  position: relative;
+}
+
+.productsGridItemDetails :nth-child(1) {
+  width: fit-content;
+  background-color: white;
+  padding: 2px 5px 2px 5px;
+}
+
+.productsGridItemDetails :nth-child(2) {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.productsGridItemDetails :nth-child(3) {
+  color: #767677;
+  font-size: 12px;
+}
