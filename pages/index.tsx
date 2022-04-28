@@ -3,7 +3,6 @@ import Stripe from "stripe";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/index.module.css";
-import Navbar from "../components/Navbar";
 interface Props {
   products: Stripe.Product[];
   productsPrices: Stripe.Price[];

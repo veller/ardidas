@@ -1,6 +1,8 @@
+html,
 body {
   font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -9,7 +11,7 @@ nav {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 nav .nav-top {
@@ -30,4 +32,14 @@ nav .nav-top ul {
 
 nav .nav-bottom {
   margin: 20px 0 20px 40px;
+}
+
+footer {
+  border-top: 1px solid #616363;
+  background-color: #363738;
+  color: #c8cbcc;
+  font-size: 12px;
+  padding: 40px 80px;
+  height: 50px;
+  margin-top: 40px;
 }

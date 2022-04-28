@@ -6,8 +6,7 @@ import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import axios from "axios";
 import getStripe from "../utils/get-stripe";
-import Navbar from "../components/Navbar";
-
+import styles from "../styles/product.module.css";
 interface IParams extends ParsedUrlQuery {
   productId: string;
 }
@@ -74,7 +73,7 @@ const Product: React.FC<Props> = ({
   productPriceId,
 }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <h1>{product.name}</h1>
       <Image
         src={product.images[0]}
