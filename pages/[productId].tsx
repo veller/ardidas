@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import axios from "axios";
 import getStripe from "../utils/get-stripe";
+import Navbar from "../components/Navbar";
 
 interface IParams extends ParsedUrlQuery {
   productId: string;

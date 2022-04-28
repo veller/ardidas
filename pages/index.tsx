@@ -2,8 +2,8 @@ import { GetStaticProps } from "next";
 import Stripe from "stripe";
 import Image from "next/image";
 import Link from "next/link";
-import logoImage from "../public/images/logo.png";
 import styles from "../styles/index.module.css";
+import Navbar from "../components/Navbar";
 interface Props {
   products: Stripe.Product[];
   productsPrices: Stripe.Price[];
@@ -36,13 +36,6 @@ const getProductPrice = (
 const HomePage: React.FC<Props> = ({ products, productsPrices }) => {
   return (
     <div className={styles.container}>
-      <Image
-        src={logoImage}
-        alt="shoe logo"
-        width={83}
-        height={56}
-        className={styles.logo}
-      />
       <div className={styles.productsGridContainer}>
         {products.map((product: Stripe.Product) => (
           <Link href={"/" + product.id} key={product.id}>
