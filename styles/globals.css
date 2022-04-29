@@ -31,7 +31,19 @@ nav .nav-top ul {
 }
 
 nav .nav-bottom {
-  margin: 20px 0 20px 40px;
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .nav-bottom input {
+  background-color: #e9ecef;
+  border: solid thin #e9ecef;
+  line-height: 32px;
+  height: 32px;
+  padding-left: 10px;
+  padding-right: 35px;
 }
 
 footer {

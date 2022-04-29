@@ -16,13 +16,12 @@ const NavBar = (): JSX.Element => {
         </ul>
       </div>
       <div className="nav-bottom">
-        <div>
-          <Link href="/">
-            <a>
-              <Image src={logoImage} alt="shoe logo" width={83} height={56} />
-            </a>
-          </Link>
-        </div>
+        <Link href="/">
+          <a>
+            <Image src={logoImage} alt="shoe logo" width={83} height={56} />
+          </a>
+        </Link>
+        <input type="text" placeholder="Search" />
       </div>
     </nav>
   );
