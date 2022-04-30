@@ -46,6 +46,10 @@ nav .nav-bottom input {
   padding-right: 35px;
 }
 
+nav .nav-bottom a {
+  text-decoration: none;
+}
+
 footer {
   border-top: 1px solid #616363;
   background-color: #363738;

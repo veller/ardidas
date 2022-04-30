@@ -83,9 +83,6 @@ const Product: React.FC<Props> = ({
       />
       <h2>Preço: {(productPrice / 100).toFixed(2)}</h2>
       <button onClick={() => redirectToCheckout(productPriceId)}>Buy</button>
-      <br />
-      <br />
-      <Link href="/">Go back</Link>
     </div>
   );
 };

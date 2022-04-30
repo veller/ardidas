@@ -1,8 +1,23 @@
 import logoImage from "../public/images/logo.png";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const NavBar = (): JSX.Element => {
+  const router = useRouter();
+  const renderLogo = (): JSX.Element => {
+    const isHome = router.asPath === "/";
+    if (isHome) {
+      return <input type="text" placeholder="Search" />;
+    }
+
+    return (
+      <a>
+        <Link href="/">Go back</Link>
+      </a>
+    );
+  };
+
   return (
     <nav>
       <div className="nav-top">
@@ -21,7 +36,7 @@ const NavBar = (): JSX.Element => {
             <Image src={logoImage} alt="shoe logo" width={83} height={56} />
           </a>
         </Link>
-        <input type="text" placeholder="Search" />
+        {renderLogo()}
       </div>
     </nav>
   );
