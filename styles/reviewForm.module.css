@@ -1,0 +1,32 @@
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 20%;
+}
+
+.reviewInput {
+  margin-top: 10px;
+  height: 150px;
+  box-shadow: 4px 4px #000, 4px 4px 0px 1px #fff;
+  padding: 30px;
+  font-size: 20px;
+}
+
+.reviewSubmitButton {
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 0;
+  padding: 0 15px;
+  box-shadow: 4px 4px #fff, 4px 4px 0px 1px #000;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}

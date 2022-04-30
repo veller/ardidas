@@ -7,6 +7,7 @@ import axios from "axios";
 import getStripe from "../utils/get-stripe";
 import styles from "../styles/product.module.css";
 import { FaArrowRight } from "react-icons/fa";
+import { ReviewForm } from "../components/ReviewForm";
 interface IParams extends ParsedUrlQuery {
   productId: string;
 }
@@ -73,23 +74,6 @@ const Product: React.FC<Props> = ({
   productPriceId,
 }): JSX.Element => {
   const [showForm, setShowForm] = useState<boolean>(false);
-
-  const ReviewForm: React.FC = (): JSX.Element => {
-    const registerReview = (event: any) => {
-      event.preventDefault();
-      console.log(event.target.review.value);
-      setShowForm(false);
-    };
-
-    return (
-      <form className={styles.reviewForm} onSubmit={registerReview}>
-        <textarea className={styles.reviewInput} name="review" required />
-        <button className={styles.reviewSubmitButton} type="submit">
-          Submit
-        </button>
-      </form>
-    );
-  };
 
   return (
     <>
