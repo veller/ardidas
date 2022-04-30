@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Stripe from "stripe";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
@@ -72,34 +72,64 @@ const Product: React.FC<Props> = ({
   productPrice,
   productPriceId,
 }): JSX.Element => {
-  return (
-    <div className={styles.container}>
-      <div className={styles.image}>
-        <Image
-          src={product.images[0]}
-          alt={product.name}
-          width={400}
-          height={400}
-          objectFit="contain"
-        />
-      </div>
-      <div className={styles.productContainer}>
-        <h1 className={styles.productName}>{product.name}</h1>
-        <h2 className={styles.productPrice}>
-          ${(productPrice / 100).toFixed(2)}
-        </h2>
-        <p>{product.description}</p>
-        <button
-          className={styles.productBuyButton}
-          onClick={() => redirectToCheckout(productPriceId)}
-        >
-          <span>Click to buy using Stripe</span>
-          <span>
-            <FaArrowRight />
-          </span>
+  const [showForm, setShowForm] = useState<boolean>(false);
+
+  const ReviewForm: React.FC = (): JSX.Element => {
+    const registerReview = (event: any) => {
+      event.preventDefault();
+      console.log(event.target.review.value);
+      setShowForm(false);
+    };
+
+    return (
+      <form className={styles.reviewForm} onSubmit={registerReview}>
+        <textarea className={styles.reviewInput} name="review" required />
+        <button className={styles.reviewSubmitButton} type="submit">
+          Submit
         </button>
+      </form>
+    );
+  };
+
+  return (
+    <>
+      <div className={styles.container}>
+        <div className={styles.image}>
+          <Image
+            src={product.images[0]}
+            alt={product.name}
+            width={400}
+            height={400}
+            objectFit="contain"
+          />
+        </div>
+        <div className={styles.productContainer}>
+          <h1 className={styles.productName}>{product.name}</h1>
+          <h2 className={styles.productPrice}>
+            ${(productPrice / 100).toFixed(2)}
+          </h2>
+          <p>{product.description}</p>
+          <button
+            className={styles.productBuyButton}
+            onClick={() => redirectToCheckout(productPriceId)}
+          >
+            <span>Click to buy using Stripe</span>
+            <span>
+              <FaArrowRight />
+            </span>
+          </button>
+        </div>
       </div>
-    </div>
+      <div className={styles.reviewsContainer}>
+        <button
+          className={styles.addReviewButton}
+          onClick={() => setShowForm(true)}
+        >
+          <span>Add a review</span>
+        </button>
+        {showForm && <ReviewForm />}
+      </div>
+    </>
   );
 };
 
