@@ -2,11 +2,11 @@ import React from "react";
 import Stripe from "stripe";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import axios from "axios";
 import getStripe from "../utils/get-stripe";
 import styles from "../styles/product.module.css";
+import { FaArrowRight } from "react-icons/fa";
 interface IParams extends ParsedUrlQuery {
   productId: string;
 }
@@ -71,18 +71,34 @@ const Product: React.FC<Props> = ({
   product,
   productPrice,
   productPriceId,
-}) => {
+}): JSX.Element => {
   return (
     <div className={styles.container}>
-      <h1>{product.name}</h1>
-      <Image
-        src={product.images[0]}
-        alt={product.name}
-        width={400}
-        height={400}
-      />
-      <h2>Preço: {(productPrice / 100).toFixed(2)}</h2>
-      <button onClick={() => redirectToCheckout(productPriceId)}>Buy</button>
+      <div className={styles.image}>
+        <Image
+          src={product.images[0]}
+          alt={product.name}
+          width={400}
+          height={400}
+          objectFit="contain"
+        />
+      </div>
+      <div className={styles.productContainer}>
+        <h1 className={styles.productName}>{product.name}</h1>
+        <h2 className={styles.productPrice}>
+          ${(productPrice / 100).toFixed(2)}
+        </h2>
+        <p>{product.description}</p>
+        <button
+          className={styles.productBuyButton}
+          onClick={() => redirectToCheckout(productPriceId)}
+        >
+          <span>Click to buy using Stripe</span>
+          <span>
+            <FaArrowRight />
+          </span>
+        </button>
+      </div>
     </div>
   );
 };

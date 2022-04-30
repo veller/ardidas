@@ -1,3 +1,61 @@
 .container {
-  min-height: calc(100vh - 100px);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+}
+
+.image {
+  background-color: #edeef0;
+  text-align: center;
+}
+
+.productContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 4fr;
+}
+
+.productName {
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 32px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  font-style: oblique;
+  margin-bottom: 0;
+}
+
+.productPrice {
+  font-size: 18px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.productBuyButton {
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 0;
+  padding: 0 15px;
+  box-shadow: 4px 4px #fff, 4px 4px 0px 1px #000;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  align-self: end;
+  justify-self: start;
+  margin-bottom: 20px;
+}
+
+.productBuyButton :last-child {
+  position: relative;
+  top: 1px;
+  margin-left: 10px;
 }

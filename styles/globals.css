@@ -11,7 +11,6 @@ nav {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 40px;
 }
 
 nav .nav-top {
@@ -46,8 +45,31 @@ nav .nav-bottom input {
   padding-right: 35px;
 }
 
+nav button {
+  background-color: #fff;
+  color: #000;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid #000;
+  border-radius: 0;
+  padding: 0 15px;
+  box-shadow: 4px 4px #000, 4px 4px 0px 1px #fff;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  align-self: end;
+  justify-self: start;
+  margin-bottom: 20px;
+}
+
 nav .nav-bottom a {
+  margin-left: 10px;
   text-decoration: none;
+  color: #000;
 }
 
 footer {
@@ -57,5 +79,5 @@ footer {
   font-size: 12px;
   padding: 40px 80px;
   height: 50px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
