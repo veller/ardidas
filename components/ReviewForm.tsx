@@ -15,9 +15,6 @@ export const ReviewForm: React.FC<Props> = ({ productId }): JSX.Element => {
     "ardidas-product-reviews",
     []
   );
-
-  console.log("storedValues: ", storedValues);
-
   const registerReview = (event: any) => {
     event.preventDefault();
     const reviewText = event.target.review.value;

@@ -15,9 +15,9 @@ const NavBar = (): JSX.Element => {
     return (
       <button>
         <FaArrowLeft />
-        <a>
-          <Link href="/">Go back</Link>
-        </a>
+        <Link href="/">
+          <a>Go back</a>
+        </Link>
       </button>
     );
   };
