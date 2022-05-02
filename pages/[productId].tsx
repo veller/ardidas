@@ -111,7 +111,7 @@ const Product: React.FC<Props> = ({
         >
           <span>Add a review</span>
         </button>
-        {showForm && <ReviewForm />}
+        {showForm && <ReviewForm productId={product.id} />}
       </div>
     </>
   );
