@@ -73,8 +73,6 @@ const Product: React.FC<Props> = ({
   productPrice,
   productPriceId,
 }): JSX.Element => {
-  const [showForm, setShowForm] = useState<boolean>(false);
-
   return (
     <>
       <div className={styles.container}>
@@ -104,15 +102,7 @@ const Product: React.FC<Props> = ({
           </button>
         </div>
       </div>
-      <div className={styles.reviewsContainer}>
-        <button
-          className={styles.addReviewButton}
-          onClick={() => setShowForm(true)}
-        >
-          <span>Add a review</span>
-        </button>
-        {showForm && <ReviewForm productId={product.id} />}
-      </div>
+      <ReviewForm productId={product.id} />
     </>
   );
 };
