@@ -5,6 +5,26 @@
   width: 20%;
 }
 
+.reviewsContainer {
+  margin-left: 20px;
+}
+
+.addReviewButton {
+  background-color: #fff;
+  color: #000;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid #000;
+  border-radius: 0;
+  padding: 0 15px;
+  box-shadow: 4px 4px #000, 4px 4px 0px 1px #fff;
+  cursor: pointer;
+}
+
 .reviewInput {
   margin-top: 10px;
   height: 150px;
