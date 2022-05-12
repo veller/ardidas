@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Stripe from "stripe";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import axios from "axios";
 import getStripe from "../utils/get-stripe";
 import styles from "../styles/product.module.css";
 import { FaArrowRight } from "react-icons/fa";
-import { ReviewForm } from "../components/ReviewForm";
+import { Review } from "../components/Review";
 interface IParams extends ParsedUrlQuery {
   productId: string;
 }
@@ -102,7 +102,7 @@ const Product: React.FC<Props> = ({
           </button>
         </div>
       </div>
-      <ReviewForm productId={product.id} />
+      <Review />
     </>
   );
 };
