@@ -28,8 +28,7 @@ export const Review: React.FC = (): JSX.Element => {
       }
     );
     const data = await response.json();
-    console.log("data: ", data);
-    setReviews([data]);
+    setReviews(data);
   };
 
   return (
@@ -51,9 +50,9 @@ export const Review: React.FC = (): JSX.Element => {
         </>
       )}
       <ul>
-        {reviews?.map((review) => (
-          <li key={Math.random() * 10000}>{review}</li>
-        ))}
+        {reviews?.map((review) => {
+          return <li key={Math.random() * 10000}>{review}</li>;
+        })}
       </ul>
     </div>
   );
