@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../styles/reviewForm.module.css";
+import styles from "../styles/review.module.css";
 import { useRouter } from "next/router";
 
 type Review = {
@@ -29,31 +29,46 @@ export const Review: React.FC = (): JSX.Element => {
     );
     const data = await response.json();
     setReviews(data);
+    setReviewText("");
+    setShowForm(false);
   };
 
   return (
-    <div className={styles.reviewsContainer}>
-      <button
-        className={styles.addReviewButton}
-        onClick={() => setShowForm(true)}
-      >
-        <span>Add a review</span>
-      </button>
-      {showForm && (
-        <>
-          <textarea
-            value={reviewText}
-            onChange={(event) => setReviewText(event.target.value)}
-            required
-          />
-          <button onClick={submitReview}>Submit</button>
-        </>
-      )}
-      <ul>
-        {reviews?.map((review) => {
-          return <li key={Math.random() * 10000}>{review}</li>;
+    <>
+      <div className={styles.reviewForm}>
+        <button
+          className={styles.addReviewButton}
+          onClick={() => setShowForm(!showForm)}
+        >
+          <span>Add a review</span>
+        </button>
+        {showForm && (
+          <>
+            <textarea
+              className={styles.reviewTextArea}
+              value={reviewText}
+              onChange={(event) => setReviewText(event.target.value)}
+              required
+            />
+            <button
+              className={styles.reviewSubmitButton}
+              onClick={submitReview}
+            >
+              Submit
+            </button>
+          </>
+        )}
+      </div>
+      <ul className={styles.reviewList}>
+        {reviews?.map((review, index) => {
+          return (
+            <li className={styles.reviewItem} key={Math.random() * 10000}>
+              <h1>Review #{index + 1}</h1>
+              <p>{review}</p>
+            </li>
+          );
         })}
       </ul>
-    </div>
+    </>
   );
 };
