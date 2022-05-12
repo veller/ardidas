@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     apiVersion: "2020-08-27",
   });
 
-  const products = await stripe.products.list();
+  const products = await stripe.products.list({ limit: 100 });
   const paths = products.data.map((product) => ({
     params: {
       productId: product.id,
