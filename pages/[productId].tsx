@@ -74,7 +74,7 @@ const Product: React.FC<Props> = ({
   productPriceId,
 }): JSX.Element => {
   return (
-    <>
+    <div className={styles.content}>
       <div className={styles.container}>
         <div className={styles.image}>
           <Image
@@ -103,7 +103,7 @@ const Product: React.FC<Props> = ({
         </div>
       </div>
       <Review />
-    </>
+    </div>
   );
 };
 
