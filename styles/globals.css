@@ -12,12 +12,29 @@ nav {
 }
 
 nav .nav-top {
+  min-height: 50px;
   background-color: #000;
   color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1300px) {
+  nav .nav-top ul li + li {
+    display: none;
+  }
+
+  nav .nav-top ul:first-child {
+    text-align: center;
+    margin: 0 30px;
+  }
 }
 
 nav .nav-top ul {
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: space-around;
   list-style: none;

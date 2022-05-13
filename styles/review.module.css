@@ -69,3 +69,15 @@
   font-style: oblique;
   margin-bottom: 0;
 }
+
+@media (max-width: 850px) {
+  .reviewForm {
+    width: 30%;
+  }
+}
+
+@media (max-width: 600px) {
+  .reviewForm {
+    width: 40%;
+  }
+}
