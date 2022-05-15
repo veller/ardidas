@@ -44,6 +44,7 @@ const HomePage: React.FC<Props> = ({ products, productsPrices }) => {
                 alt={product.name}
                 width={380}
                 height={380}
+                priority={true}
               />
               <div className={styles.productsGridItemDetails}>
                 <div>$ {getProductPrice(product.id, productsPrices)}</div>
