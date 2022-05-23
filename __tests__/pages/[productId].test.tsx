@@ -1,23 +1,23 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Product from "../../pages/[productId]";
 import "@testing-library/jest-dom";
 import {
   dummyStripePrices,
   dummyStripeProducts,
 } from "../utils/dummyStripeData";
+import userEvent from "@testing-library/user-event";
+import axios from "axios";
 
+jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+mockedAxios.post.mockResolvedValue({
+  data: { id: 1 },
+  status: 200,
+});
+jest.mock("../../utils/get-stripe");
 jest.mock("../../components/Review", () => ({ Review: () => <div></div> }));
 
 describe("Product", () => {
-  jest.mock("stripe", () => ({
-    products: {
-      list: jest.fn().mockResolvedValue(dummyStripeProducts()),
-    },
-    prices: {
-      list: jest.fn().mockResolvedValue(dummyStripePrices()),
-    },
-  }));
-
   const makeSut = () => {
     const productPrice = dummyStripePrices()[0];
     return render(
@@ -57,5 +57,17 @@ describe("Product", () => {
       name: "Click to buy using Stripe",
     });
     expect(button).toBeInTheDocument();
+  });
+
+  it("redirects to checkout when buy with stripe button is clicked", async () => {
+    makeSut();
+
+    await waitFor(async () => {
+      await userEvent.click(
+        screen.getByRole("button", { name: "Click to buy using Stripe" })
+      );
+    });
+
+    expect(mockedAxios.post).toBeCalled();
   });
 });

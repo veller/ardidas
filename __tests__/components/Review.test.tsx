@@ -52,8 +52,6 @@ describe("Review", () => {
         screen.getByRole("button", { name: "Submit" })
       ).toBeInTheDocument();
     });
-
-    // screen.getByRole("");
   });
 
   it("should update the review list upon submitting a review", async () => {
