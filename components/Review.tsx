@@ -62,7 +62,7 @@ export const Review: React.FC = (): JSX.Element => {
           return (
             <li className={styles.reviewItem} key={Math.random() * 10000}>
               <h1>{`Review #${index + 1}` || <Skeleton />}</h1>
-              <p>{{ review } || <Skeleton count={10} />}</p>
+              <p>{review || <Skeleton count={10} />}</p>
             </li>
           );
         })}
