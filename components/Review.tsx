@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styles from "../styles/review.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 type Review = {
   review: string;
@@ -59,8 +61,8 @@ export const Review: React.FC = (): JSX.Element => {
         {reviews?.map((review, index) => {
           return (
             <li className={styles.reviewItem} key={Math.random() * 10000}>
-              <h1>Review #{index + 1}</h1>
-              <p>{review}</p>
+              <h1>{`Review #${index + 1}` || <Skeleton />}</h1>
+              <p>{{ review } || <Skeleton count={10} />}</p>
             </li>
           );
         })}
