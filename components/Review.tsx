@@ -13,12 +13,14 @@ export const Review: React.FC = (): JSX.Element => {
   const [showForm, setShowForm] = useState<boolean>(false);
   const [reviews, setReviews] = useState<Review[]>();
   const [reviewText, setReviewText] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
 
   useEffect(() => {
     axios
       .get(`/api/products/${router.query.productId}/reviews`)
-      .then(({ data }) => setReviews(data));
+      .then(({ data }) => setReviews(data))
+      .then(() => setLoading(false));
   }, [router.query.productId]);
 
   const submitReview = async () => {
@@ -57,12 +59,25 @@ export const Review: React.FC = (): JSX.Element => {
           </>
         )}
       </div>
-      <ul className={styles.reviewList}>
+
+      {loading && (
+        <Skeleton
+          height={15}
+          width={350}
+          count={3}
+          style={{ margin: "10px 0 0 20px" }}
+        />
+      )}
+
+      <ul
+        className={styles.reviewList}
+        style={{ display: loading ? "none" : undefined }}
+      >
         {reviews?.map((review, index) => {
           return (
             <li className={styles.reviewItem} key={Math.random() * 10000}>
-              <h1>{`Review #${index + 1}` || <Skeleton />}</h1>
-              <p>{review || <Skeleton count={10} />}</p>
+              <h1>Review #{index + 1}</h1>
+              <p>{review}</p>
             </li>
           );
         })}
